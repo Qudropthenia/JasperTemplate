@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: "jdbc:sqlserver://localhost;databaseName=test_jasper"
+    username: devel
+    password: devel
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+# Полный перечень настроек Spring Boot:
+# https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html
