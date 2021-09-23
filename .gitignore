@@ -1,0 +1,22 @@
+HELP.md
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+/target/
+/db/
+/db/**
+*/db/**
+*/target/**
+*/*/target/**
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+*.log
+*.gz
+*.db
+
+### VS Code ###
+.vscode/
