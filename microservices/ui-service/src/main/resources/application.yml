@@ -1,2 +1,5 @@
 server:
   port: 8080
+jasper-report:
+  folder-templates: "microservices\\ui-service\\src\\main\\resources\\jasperReports"
+  folder-finish: "E:\\Java\\tools\\JasperTemplate"

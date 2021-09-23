@@ -21,6 +21,15 @@ public class ExpensesTypeEntity {
 	)
 	private Set<ExpensesItemEntity> items;
 
+	public ExpensesTypeEntity() {
+	}
+
+	public ExpensesTypeEntity(long id, String name, Set<ExpensesItemEntity> items) {
+		this.id = id;
+		this.name = name;
+		this.items = items;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -62,4 +71,12 @@ public class ExpensesTypeEntity {
 //		result = 31 * result + (name != null ? name.hashCode() : 0);
 //		return result;
 //	}
+
+	@Override
+	public String toString() {
+		return "ExpensesTypeEntity{" +
+				"id=" + id +
+				", name='" + name + '\'' +
+				'}';
+	}
 }
