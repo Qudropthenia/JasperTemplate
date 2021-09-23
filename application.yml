@@ -8,6 +8,17 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: jasper
+    template:
+      exchange: jasperTemplate
+    queues:
+      request-doc-queue: RequestDocument
+      response-doc-queue: RequestDocument
 
 # Полный перечень настроек Spring Boot:
 # https://docs.spring.io/spring-boot/docs/current/reference/html/application-properties.html
