@@ -60,7 +60,7 @@
 					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Arial" size="16"/>
+					<font fontName="Times New Roman" size="16"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Is null value: " + ($F{name} == null) + ": " + ($F{name} == null ? "." : " => " + $F{name})]]></textFieldExpression>
 			</textField>

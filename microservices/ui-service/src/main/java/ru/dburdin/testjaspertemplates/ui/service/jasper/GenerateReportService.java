@@ -2,7 +2,9 @@ package ru.dburdin.testjaspertemplates.ui.service.jasper;
 
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.design.JRDesignConditionalStyle;
 import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
@@ -15,9 +17,7 @@ import ru.dburdin.testjaspertemplates.ui.service.Dao;
 import ru.dburdin.testjaspertemplates.ui.service.impl.DaoImpl;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 @Service("Example")
 public class GenerateReportService implements GenerateReport {
@@ -39,11 +39,7 @@ public class GenerateReportService implements GenerateReport {
 	@Override
 	public void generate() {
 		try {
-//			List<ExpensesTypeEntity> types = dao.allExpensesType();
-			List<ExpensesTypeEntity> types = new ArrayList<>() {{
-				add(new ExpensesTypeEntity(1, "Раз", null));
-				add(new ExpensesTypeEntity(1, "Два", null));
-			}};
+			List<ExpensesTypeEntity> types = dao.allExpensesType();
 			if (CollectionUtils.isEmpty(types)) {
 				LOGGER.warn("В коллекции нет данных дял отрисовки");
 				return;
@@ -59,7 +55,10 @@ public class GenerateReportService implements GenerateReport {
 			JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(types);
 			LOGGER.info("DataSource сформирован");
 
-			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, new HashMap<>(), beanColDataSource);
+			Map<String, Object> parameters = new HashMap<>() {{
+				put(JRParameter.REPORT_LOCALE, new Locale("RU", "ru"));
+			}};
+			JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, beanColDataSource);
 			LOGGER.info("Report запонен");
 
 			JasperExportManager.exportReportToPdfFile(jasperPrint, REPORT_FOLDER + "\\test_report.pdf");
